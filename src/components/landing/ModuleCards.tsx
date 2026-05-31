@@ -115,7 +115,7 @@ const PLANS = [
   },
   {
     name: "Enterprise", price: "Custom", desc: "For hotels and multi-location groups.",
-    features: ["Everything in Premium", "Kitchen Display System", "Hotel Room Service Module", "Priority Support"],
+    features: ["Everything in Premium", "Kitchen Display System", "Integration with Other Software"],
     cta: "Contact Sales", highlight: false,
   },
 ];
@@ -169,27 +169,83 @@ export function SubscriptionModule() {
         ))}
       </div>
 
-      {/* Comparison strip */}
-      <div className="mt-8 overflow-hidden rounded-2xl border border-border">
-        <div className="grid grid-cols-4 bg-surface px-5 py-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-          <span>Feature</span><span className="text-center">Starter</span>
-          <span className="text-center">Premium</span><span className="text-center">Enterprise</span>
-        </div>
-        {[
-          ["QR per Table", "—", "✓", "✓"],
-          ["Kitchen Display", "—", "—", "✓"],
-          ["Room Service", "—", "✓", "✓"],
-          ["Priority Support", "—", "—", "✓"],
-        ].map((row) => (
-          <div key={row[0]} className="grid grid-cols-4 border-t border-border px-5 py-3 text-sm">
-            <span className="font-medium">{row[0]}</span>
-            <span className="text-center text-muted-foreground">{row[1]}</span>
-            <span className="text-center text-primary">{row[2]}</span>
-            <span className="text-center text-primary">{row[3]}</span>
+      {/* Comparison matrix */}
+      <div className="mt-10">
+        <div className="mb-4 flex items-end justify-between gap-4">
+          <div>
+            <h3 className="font-display text-2xl leading-tight">Compare plans</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Every feature, side by side. Pick the plan that fits your operation.
+            </p>
           </div>
-        ))}
+          <span className="hidden items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground sm:inline-flex">
+            Feature matrix
+          </span>
+        </div>
+
+        <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-card">
+          {/* Header */}
+          <div className="grid grid-cols-[1.6fr_repeat(3,1fr)] items-center bg-surface px-4 py-3.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground sm:px-6">
+            <span>Feature</span>
+            <span className="text-center">Starter</span>
+            <span className="text-center text-primary">Premium</span>
+            <span className="text-center">Enterprise</span>
+          </div>
+
+          {[
+            ["Full Dashboard Access", true, true, true],
+            ["Personalized Restaurant ID", true, true, true],
+            ["Daily Analytics", true, true, true],
+            ["Single Physical QR", true, false, false],
+            ["Physical QR per Table", false, true, true],
+            ["Room Ordering System", false, true, true],
+            ["Kitchen Display System", false, false, true],
+            ["Integration with Other Software", false, false, true],
+          ].map((row, idx) => {
+            const [label, s, p, e] = row as [string, boolean, boolean, boolean];
+            return (
+              <div
+                key={label as string}
+                className={`grid grid-cols-[1.6fr_repeat(3,1fr)] items-center px-4 py-3.5 text-sm transition-colors hover:bg-surface/60 sm:px-6 ${
+                  idx !== 0 ? "border-t border-border" : ""
+                }`}
+              >
+                <span className="pr-2 font-medium text-foreground">{label}</span>
+                <Cell on={s} />
+                <Cell on={p} highlight />
+                <Cell on={e} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </ModuleCard>
+  );
+}
+
+function Cell({ on, highlight = false }: { on: boolean; highlight?: boolean }) {
+  return (
+    <div className="flex items-center justify-center">
+      {on ? (
+        <span
+          className={`flex h-7 w-7 items-center justify-center rounded-full ${
+            highlight
+              ? "bg-gradient-coral text-primary-foreground shadow-soft"
+              : "bg-primary-soft text-primary"
+          }`}
+          aria-label="Included"
+        >
+          <Check className="h-3.5 w-3.5" strokeWidth={3} />
+        </span>
+      ) : (
+        <span
+          className="flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-border text-muted-foreground/60"
+          aria-label="Not included"
+        >
+          <span className="h-[2px] w-3 rounded-full bg-current" />
+        </span>
+      )}
+    </div>
   );
 }
 

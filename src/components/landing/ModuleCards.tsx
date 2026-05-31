@@ -115,7 +115,7 @@ const PLANS = [
   },
   {
     name: "Enterprise", price: "Custom", desc: "For hotels and multi-location groups.",
-    features: ["Everything in Premium", "Kitchen Display System", "Hotel Room Service Module", "Priority Support"],
+    features: ["Everything in Premium", "Kitchen Display System", "Integration with Other Software"],
     cta: "Contact Sales", highlight: false,
   },
 ];

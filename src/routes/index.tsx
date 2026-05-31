@@ -1,29 +1,47 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/landing/Nav";
+import { Hero } from "@/components/landing/Hero";
+import {
+  PortalCard, Pricing, Features, LiveDemo, HowItWorks,
+  SocialProof, ContactCard, FinalCta, Footer,
+} from "@/components/landing/Sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "PaperlessPlates — QR Ordering, KDS & Analytics for Restaurants & Hotels" },
+      {
+        name: "description",
+        content:
+          "Go paperless. Serve faster. Earn more. PaperlessPlates is the all-in-one QR menu, real-time order management, kitchen display, and room service platform for restaurants and hotels.",
+      },
+      { property: "og:title", content: "PaperlessPlates — Modern QR Ordering Platform" },
+      {
+        property: "og:description",
+        content:
+          "QR-based digital menus, real-time order management, kitchen displays, analytics, and room service ordering — all in one platform.",
+      },
     ],
   }),
-  component: Index,
+  component: Landing,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+function Landing() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background">
+      <Nav />
+      <main>
+        <Hero />
+        <PortalCard />
+        <Features />
+        <LiveDemo />
+        <HowItWorks />
+        <Pricing />
+        <SocialProof />
+        <ContactCard />
+        <FinalCta />
+      </main>
+      <Footer />
     </div>
   );
 }

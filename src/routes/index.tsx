@@ -2,9 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/landing/Nav";
 import { Hero } from "@/components/landing/Hero";
 import {
-  PortalCard, Pricing, Features, LiveDemo, HowItWorks,
-  SocialProof, ContactCard, FinalCta, Footer,
-} from "@/components/landing/Sections";
+  RestaurantPortalModule,
+  SubscriptionModule,
+  FeaturesModule,
+  DemoModule,
+  ContactModule,
+  MiniFooter,
+} from "@/components/landing/ModuleCards";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -28,20 +32,19 @@ export const Route = createFileRoute("/")({
 
 function Landing() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-surface">
       <Nav />
       <main>
         <Hero />
-        <PortalCard />
-        <Features />
-        <LiveDemo />
-        <HowItWorks />
-        <Pricing />
-        <SocialProof />
-        <ContactCard />
-        <FinalCta />
+        <div className="mx-auto max-w-7xl space-y-8 px-6 pb-16 pt-4 sm:space-y-10">
+          <RestaurantPortalModule />
+          <SubscriptionModule />
+          <FeaturesModule />
+          <DemoModule />
+          <ContactModule />
+        </div>
       </main>
-      <Footer />
+      <MiniFooter />
     </div>
   );
 }

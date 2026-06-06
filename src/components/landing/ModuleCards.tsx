@@ -90,9 +90,9 @@ export function RestaurantPortalModule() {
             </span>
             <h3 className="mt-4 text-sm font-semibold">{p.title}</h3>
             <p className="mt-1 flex-1 text-xs leading-relaxed text-muted-foreground">{p.desc}</p>
-            <button className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">
+            <Link to={p.to} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">
               {p.cta} <ArrowRight className="h-3 w-3" />
-            </button>
+            </Link>
           </div>
         ))}
       </div>

@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 import {
   QrCode, Clock3, ChefHat, BarChart3, CreditCard, BedDouble,
   Check, Sparkles, Smartphone, Instagram, Linkedin, MessageCircle,

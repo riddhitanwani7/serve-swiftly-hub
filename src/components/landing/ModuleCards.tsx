@@ -62,12 +62,12 @@ function ModuleCard({
    A. Restaurant Portal Card
    ============================================================ */
 export function RestaurantPortalModule() {
-  const portals = [
-    { icon: LogIn, title: "Admin Login", desc: "Owner-level access to settings, billing, and locations.", cta: "Open Admin" },
-    { icon: UserCog, title: "Manager Login", desc: "Daily operations, staff, and live order oversight.", cta: "Open Manager" },
-    { icon: MailCheck, title: "Email Verification", desc: "Secure onboarding with one-tap email verify.", cta: "Verify Email" },
-    { icon: KeyRound, title: "Password Recovery", desc: "Self-serve reset with magic links in seconds.", cta: "Reset Password" },
-    { icon: LayoutDashboard, title: "Dashboard Access", desc: "Unified KPIs, orders, and analytics in one place.", cta: "Go to Dashboard" },
+  const portals: { icon: typeof LogIn; title: string; desc: string; cta: string; to: string }[] = [
+    { icon: LogIn, title: "Admin Login", desc: "Owner-level access to settings, billing, and locations.", cta: "Open Admin", to: "/login" },
+    { icon: UserCog, title: "Manager Login", desc: "Daily operations, staff, and live order oversight.", cta: "Open Manager", to: "/login" },
+    { icon: MailCheck, title: "Email Verification", desc: "Secure onboarding with one-tap email verify.", cta: "Verify Email", to: "/register" },
+    { icon: KeyRound, title: "Password Recovery", desc: "Self-serve reset with magic links in seconds.", cta: "Reset Password", to: "/forgot-password" },
+    { icon: LayoutDashboard, title: "Dashboard Access", desc: "Unified KPIs, orders, and analytics in one place.", cta: "Go to Dashboard", to: "/login" },
   ];
   return (
     <ModuleCard

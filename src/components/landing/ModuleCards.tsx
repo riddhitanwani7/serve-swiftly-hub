@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "@tanstack/react-router";
 import {
   QrCode, Clock3, ChefHat, BarChart3, CreditCard, BedDouble,
   Check, Sparkles, Smartphone, Instagram, Linkedin, MessageCircle,
@@ -61,12 +62,12 @@ function ModuleCard({
    A. Restaurant Portal Card
    ============================================================ */
 export function RestaurantPortalModule() {
-  const portals = [
-    { icon: LogIn, title: "Admin Login", desc: "Owner-level access to settings, billing, and locations.", cta: "Open Admin" },
-    { icon: UserCog, title: "Manager Login", desc: "Daily operations, staff, and live order oversight.", cta: "Open Manager" },
-    { icon: MailCheck, title: "Email Verification", desc: "Secure onboarding with one-tap email verify.", cta: "Verify Email" },
-    { icon: KeyRound, title: "Password Recovery", desc: "Self-serve reset with magic links in seconds.", cta: "Reset Password" },
-    { icon: LayoutDashboard, title: "Dashboard Access", desc: "Unified KPIs, orders, and analytics in one place.", cta: "Go to Dashboard" },
+  const portals: { icon: typeof LogIn; title: string; desc: string; cta: string; to: string }[] = [
+    { icon: LogIn, title: "Admin Login", desc: "Owner-level access to settings, billing, and locations.", cta: "Open Admin", to: "/login" },
+    { icon: UserCog, title: "Manager Login", desc: "Daily operations, staff, and live order oversight.", cta: "Open Manager", to: "/login" },
+    { icon: MailCheck, title: "Email Verification", desc: "Secure onboarding with one-tap email verify.", cta: "Verify Email", to: "/register" },
+    { icon: KeyRound, title: "Password Recovery", desc: "Self-serve reset with magic links in seconds.", cta: "Reset Password", to: "/forgot-password" },
+    { icon: LayoutDashboard, title: "Dashboard Access", desc: "Unified KPIs, orders, and analytics in one place.", cta: "Go to Dashboard", to: "/login" },
   ];
   return (
     <ModuleCard
@@ -89,9 +90,9 @@ export function RestaurantPortalModule() {
             </span>
             <h3 className="mt-4 text-sm font-semibold">{p.title}</h3>
             <p className="mt-1 flex-1 text-xs leading-relaxed text-muted-foreground">{p.desc}</p>
-            <button className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">
+            <Link to={p.to} className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-primary">
               {p.cta} <ArrowRight className="h-3 w-3" />
-            </button>
+            </Link>
           </div>
         ))}
       </div>
@@ -160,10 +161,13 @@ export function SubscriptionModule() {
               ))}
             </ul>
             <Button
+              asChild
               className={`mt-6 ${p.highlight ? "bg-gradient-coral" : ""}`}
               variant={p.highlight ? "default" : "outline"}
             >
-              {p.cta} <ArrowRight className="ml-1 h-4 w-4" />
+              <Link to={p.cta === "Contact Sales" ? "/register" : "/register"}>
+                {p.cta} <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         ))}

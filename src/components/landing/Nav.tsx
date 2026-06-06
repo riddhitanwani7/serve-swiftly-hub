@@ -19,9 +19,11 @@ export function Nav() {
           <a href="#contact" className="transition-colors hover:text-foreground">Contact</a>
         </nav>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="sm" className="hidden sm:inline-flex">Admin Login</Button>
-          <Button size="sm" className="bg-gradient-coral shadow-soft hover:opacity-95">
-            Create Free Account
+          <Button asChild variant="ghost" size="sm" className="hidden sm:inline-flex">
+            <Link to="/login">Admin Login</Link>
+          </Button>
+          <Button asChild size="sm" className="bg-gradient-coral shadow-soft hover:opacity-95">
+            <Link to="/register">Create Free Account</Link>
           </Button>
         </div>
       </div>

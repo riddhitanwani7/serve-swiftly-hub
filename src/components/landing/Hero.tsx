@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, ChefHat, TrendingUp, Clock, ShieldCheck, Infinity as InfinityIcon } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 export function Hero() {
   return (

@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { UtensilsCrossed } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 export function Nav() {
   return (

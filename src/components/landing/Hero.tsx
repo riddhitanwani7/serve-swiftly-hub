@@ -21,11 +21,13 @@ export function Hero() {
             and room service ordering — all in one platform.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button size="lg" className="bg-gradient-coral shadow-elevated hover:opacity-95">
-              Create Free Account <ArrowRight className="ml-1 h-4 w-4" />
+            <Button asChild size="lg" className="bg-gradient-coral shadow-elevated hover:opacity-95">
+              <Link to="/register">
+                Create Free Account <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-border bg-card">
-              Admin Login
+            <Button asChild size="lg" variant="outline" className="border-border bg-card">
+              <Link to="/login">Admin Login</Link>
             </Button>
           </div>
           <dl className="mt-10 grid max-w-lg grid-cols-3 gap-6 border-t border-border pt-8">

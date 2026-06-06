@@ -161,10 +161,13 @@ export function SubscriptionModule() {
               ))}
             </ul>
             <Button
+              asChild
               className={`mt-6 ${p.highlight ? "bg-gradient-coral" : ""}`}
               variant={p.highlight ? "default" : "outline"}
             >
-              {p.cta} <ArrowRight className="ml-1 h-4 w-4" />
+              <Link to={p.cta === "Contact Sales" ? "/register" : "/register"}>
+                {p.cta} <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         ))}

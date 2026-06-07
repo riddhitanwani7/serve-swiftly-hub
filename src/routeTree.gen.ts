@@ -23,12 +23,16 @@ import { Route as CustomerMenuRouteImport } from './routes/customer.menu'
 import { Route as CustomerCheckoutRouteImport } from './routes/customer.checkout'
 import { Route as CustomerCartRouteImport } from './routes/customer.cart'
 import { Route as AppThemeRouteImport } from './routes/app.theme'
+import { Route as AppTablesRouteImport } from './routes/app.tables'
 import { Route as AppSubscriptionRouteImport } from './routes/app.subscription'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
+import { Route as AppRoomsRouteImport } from './routes/app.rooms'
+import { Route as AppQrManagementRouteImport } from './routes/app.qr-management'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppPreviewRouteImport } from './routes/app.preview'
 import { Route as AppOrdersRouteImport } from './routes/app.orders'
 import { Route as AppMenuRouteImport } from './routes/app.menu'
+import { Route as AppKitchenRouteImport } from './routes/app.kitchen'
 import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
 import { Route as CustomerPaymentSuccessRouteImport } from './routes/customer.payment.success'
 import { Route as CustomerPaymentFailedRouteImport } from './routes/customer.payment.failed'
@@ -106,6 +110,11 @@ const AppThemeRoute = AppThemeRouteImport.update({
   path: '/theme',
   getParentRoute: () => AppRoute,
 } as any)
+const AppTablesRoute = AppTablesRouteImport.update({
+  id: '/tables',
+  path: '/tables',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppSubscriptionRoute = AppSubscriptionRouteImport.update({
   id: '/subscription',
   path: '/subscription',
@@ -114,6 +123,16 @@ const AppSubscriptionRoute = AppSubscriptionRouteImport.update({
 const AppSettingsRoute = AppSettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRoomsRoute = AppRoomsRouteImport.update({
+  id: '/rooms',
+  path: '/rooms',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppQrManagementRoute = AppQrManagementRouteImport.update({
+  id: '/qr-management',
+  path: '/qr-management',
   getParentRoute: () => AppRoute,
 } as any)
 const AppProfileRoute = AppProfileRouteImport.update({
@@ -134,6 +153,11 @@ const AppOrdersRoute = AppOrdersRouteImport.update({
 const AppMenuRoute = AppMenuRouteImport.update({
   id: '/menu',
   path: '/menu',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppKitchenRoute = AppKitchenRouteImport.update({
+  id: '/kitchen',
+  path: '/kitchen',
   getParentRoute: () => AppRoute,
 } as any)
 const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
@@ -178,12 +202,16 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/kitchen': typeof AppKitchenRoute
   '/app/menu': typeof AppMenuRoute
   '/app/orders': typeof AppOrdersRoute
   '/app/preview': typeof AppPreviewRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/qr-management': typeof AppQrManagementRoute
+  '/app/rooms': typeof AppRoomsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/subscription': typeof AppSubscriptionRoute
+  '/app/tables': typeof AppTablesRoute
   '/app/theme': typeof AppThemeRoute
   '/customer/cart': typeof CustomerCartRoute
   '/customer/checkout': typeof CustomerCheckoutRoute
@@ -205,12 +233,16 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/kitchen': typeof AppKitchenRoute
   '/app/menu': typeof AppMenuRoute
   '/app/orders': typeof AppOrdersRoute
   '/app/preview': typeof AppPreviewRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/qr-management': typeof AppQrManagementRoute
+  '/app/rooms': typeof AppRoomsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/subscription': typeof AppSubscriptionRoute
+  '/app/tables': typeof AppTablesRoute
   '/app/theme': typeof AppThemeRoute
   '/customer/cart': typeof CustomerCartRoute
   '/customer/checkout': typeof CustomerCheckoutRoute
@@ -234,12 +266,16 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
   '/app/analytics': typeof AppAnalyticsRoute
+  '/app/kitchen': typeof AppKitchenRoute
   '/app/menu': typeof AppMenuRoute
   '/app/orders': typeof AppOrdersRoute
   '/app/preview': typeof AppPreviewRoute
   '/app/profile': typeof AppProfileRoute
+  '/app/qr-management': typeof AppQrManagementRoute
+  '/app/rooms': typeof AppRoomsRoute
   '/app/settings': typeof AppSettingsRoute
   '/app/subscription': typeof AppSubscriptionRoute
+  '/app/tables': typeof AppTablesRoute
   '/app/theme': typeof AppThemeRoute
   '/customer/cart': typeof CustomerCartRoute
   '/customer/checkout': typeof CustomerCheckoutRoute
@@ -264,12 +300,16 @@ export interface FileRouteTypes {
     | '/register'
     | '/reset-password'
     | '/app/analytics'
+    | '/app/kitchen'
     | '/app/menu'
     | '/app/orders'
     | '/app/preview'
     | '/app/profile'
+    | '/app/qr-management'
+    | '/app/rooms'
     | '/app/settings'
     | '/app/subscription'
+    | '/app/tables'
     | '/app/theme'
     | '/customer/cart'
     | '/customer/checkout'
@@ -291,12 +331,16 @@ export interface FileRouteTypes {
     | '/register'
     | '/reset-password'
     | '/app/analytics'
+    | '/app/kitchen'
     | '/app/menu'
     | '/app/orders'
     | '/app/preview'
     | '/app/profile'
+    | '/app/qr-management'
+    | '/app/rooms'
     | '/app/settings'
     | '/app/subscription'
+    | '/app/tables'
     | '/app/theme'
     | '/customer/cart'
     | '/customer/checkout'
@@ -319,12 +363,16 @@ export interface FileRouteTypes {
     | '/register'
     | '/reset-password'
     | '/app/analytics'
+    | '/app/kitchen'
     | '/app/menu'
     | '/app/orders'
     | '/app/preview'
     | '/app/profile'
+    | '/app/qr-management'
+    | '/app/rooms'
     | '/app/settings'
     | '/app/subscription'
+    | '/app/tables'
     | '/app/theme'
     | '/customer/cart'
     | '/customer/checkout'
@@ -449,6 +497,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppThemeRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/tables': {
+      id: '/app/tables'
+      path: '/tables'
+      fullPath: '/app/tables'
+      preLoaderRoute: typeof AppTablesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/subscription': {
       id: '/app/subscription'
       path: '/subscription'
@@ -461,6 +516,20 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/app/settings'
       preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/rooms': {
+      id: '/app/rooms'
+      path: '/rooms'
+      fullPath: '/app/rooms'
+      preLoaderRoute: typeof AppRoomsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/qr-management': {
+      id: '/app/qr-management'
+      path: '/qr-management'
+      fullPath: '/app/qr-management'
+      preLoaderRoute: typeof AppQrManagementRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/profile': {
@@ -489,6 +558,13 @@ declare module '@tanstack/react-router' {
       path: '/menu'
       fullPath: '/app/menu'
       preLoaderRoute: typeof AppMenuRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/kitchen': {
+      id: '/app/kitchen'
+      path: '/kitchen'
+      fullPath: '/app/kitchen'
+      preLoaderRoute: typeof AppKitchenRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/analytics': {
@@ -538,24 +614,32 @@ declare module '@tanstack/react-router' {
 
 interface AppRouteChildren {
   AppAnalyticsRoute: typeof AppAnalyticsRoute
+  AppKitchenRoute: typeof AppKitchenRoute
   AppMenuRoute: typeof AppMenuRoute
   AppOrdersRoute: typeof AppOrdersRoute
   AppPreviewRoute: typeof AppPreviewRoute
   AppProfileRoute: typeof AppProfileRoute
+  AppQrManagementRoute: typeof AppQrManagementRoute
+  AppRoomsRoute: typeof AppRoomsRoute
   AppSettingsRoute: typeof AppSettingsRoute
   AppSubscriptionRoute: typeof AppSubscriptionRoute
+  AppTablesRoute: typeof AppTablesRoute
   AppThemeRoute: typeof AppThemeRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppAnalyticsRoute: AppAnalyticsRoute,
+  AppKitchenRoute: AppKitchenRoute,
   AppMenuRoute: AppMenuRoute,
   AppOrdersRoute: AppOrdersRoute,
   AppPreviewRoute: AppPreviewRoute,
   AppProfileRoute: AppProfileRoute,
+  AppQrManagementRoute: AppQrManagementRoute,
+  AppRoomsRoute: AppRoomsRoute,
   AppSettingsRoute: AppSettingsRoute,
   AppSubscriptionRoute: AppSubscriptionRoute,
+  AppTablesRoute: AppTablesRoute,
   AppThemeRoute: AppThemeRoute,
   AppIndexRoute: AppIndexRoute,
 }
@@ -623,3 +707,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

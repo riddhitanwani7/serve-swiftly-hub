@@ -14,9 +14,14 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as CustomerRouteImport } from './routes/customer'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app.index'
+import { Route as CustomerPaymentRouteImport } from './routes/customer.payment'
+import { Route as CustomerMenuRouteImport } from './routes/customer.menu'
+import { Route as CustomerCheckoutRouteImport } from './routes/customer.checkout'
+import { Route as CustomerCartRouteImport } from './routes/customer.cart'
 import { Route as AppThemeRouteImport } from './routes/app.theme'
 import { Route as AppSubscriptionRouteImport } from './routes/app.subscription'
 import { Route as AppSettingsRouteImport } from './routes/app.settings'
@@ -25,6 +30,11 @@ import { Route as AppPreviewRouteImport } from './routes/app.preview'
 import { Route as AppOrdersRouteImport } from './routes/app.orders'
 import { Route as AppMenuRouteImport } from './routes/app.menu'
 import { Route as AppAnalyticsRouteImport } from './routes/app.analytics'
+import { Route as CustomerPaymentSuccessRouteImport } from './routes/customer.payment.success'
+import { Route as CustomerPaymentFailedRouteImport } from './routes/customer.payment.failed'
+import { Route as CustomerOrderTrackingIdRouteImport } from './routes/customer.order-tracking.$id'
+import { Route as CustomerOrderConfirmationIdRouteImport } from './routes/customer.order-confirmation.$id'
+import { Route as CustomerMenuItemIdRouteImport } from './routes/customer.menu.item.$id'
 
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
@@ -51,6 +61,11 @@ const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   path: '/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CustomerRoute = CustomerRouteImport.update({
+  id: '/customer',
+  path: '/customer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppRoute = AppRouteImport.update({
   id: '/app',
   path: '/app',
@@ -65,6 +80,26 @@ const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AppRoute,
+} as any)
+const CustomerPaymentRoute = CustomerPaymentRouteImport.update({
+  id: '/payment',
+  path: '/payment',
+  getParentRoute: () => CustomerRoute,
+} as any)
+const CustomerMenuRoute = CustomerMenuRouteImport.update({
+  id: '/menu',
+  path: '/menu',
+  getParentRoute: () => CustomerRoute,
+} as any)
+const CustomerCheckoutRoute = CustomerCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => CustomerRoute,
+} as any)
+const CustomerCartRoute = CustomerCartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => CustomerRoute,
 } as any)
 const AppThemeRoute = AppThemeRouteImport.update({
   id: '/theme',
@@ -106,10 +141,37 @@ const AppAnalyticsRoute = AppAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => AppRoute,
 } as any)
+const CustomerPaymentSuccessRoute = CustomerPaymentSuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => CustomerPaymentRoute,
+} as any)
+const CustomerPaymentFailedRoute = CustomerPaymentFailedRouteImport.update({
+  id: '/failed',
+  path: '/failed',
+  getParentRoute: () => CustomerPaymentRoute,
+} as any)
+const CustomerOrderTrackingIdRoute = CustomerOrderTrackingIdRouteImport.update({
+  id: '/order-tracking/$id',
+  path: '/order-tracking/$id',
+  getParentRoute: () => CustomerRoute,
+} as any)
+const CustomerOrderConfirmationIdRoute =
+  CustomerOrderConfirmationIdRouteImport.update({
+    id: '/order-confirmation/$id',
+    path: '/order-confirmation/$id',
+    getParentRoute: () => CustomerRoute,
+  } as any)
+const CustomerMenuItemIdRoute = CustomerMenuItemIdRouteImport.update({
+  id: '/item/$id',
+  path: '/item/$id',
+  getParentRoute: () => CustomerMenuRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/customer': typeof CustomerRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
@@ -123,10 +185,20 @@ export interface FileRoutesByFullPath {
   '/app/settings': typeof AppSettingsRoute
   '/app/subscription': typeof AppSubscriptionRoute
   '/app/theme': typeof AppThemeRoute
+  '/customer/cart': typeof CustomerCartRoute
+  '/customer/checkout': typeof CustomerCheckoutRoute
+  '/customer/menu': typeof CustomerMenuRouteWithChildren
+  '/customer/payment': typeof CustomerPaymentRouteWithChildren
   '/app/': typeof AppIndexRoute
+  '/customer/order-confirmation/$id': typeof CustomerOrderConfirmationIdRoute
+  '/customer/order-tracking/$id': typeof CustomerOrderTrackingIdRoute
+  '/customer/payment/failed': typeof CustomerPaymentFailedRoute
+  '/customer/payment/success': typeof CustomerPaymentSuccessRoute
+  '/customer/menu/item/$id': typeof CustomerMenuItemIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/customer': typeof CustomerRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
@@ -140,12 +212,22 @@ export interface FileRoutesByTo {
   '/app/settings': typeof AppSettingsRoute
   '/app/subscription': typeof AppSubscriptionRoute
   '/app/theme': typeof AppThemeRoute
+  '/customer/cart': typeof CustomerCartRoute
+  '/customer/checkout': typeof CustomerCheckoutRoute
+  '/customer/menu': typeof CustomerMenuRouteWithChildren
+  '/customer/payment': typeof CustomerPaymentRouteWithChildren
   '/app': typeof AppIndexRoute
+  '/customer/order-confirmation/$id': typeof CustomerOrderConfirmationIdRoute
+  '/customer/order-tracking/$id': typeof CustomerOrderTrackingIdRoute
+  '/customer/payment/failed': typeof CustomerPaymentFailedRoute
+  '/customer/payment/success': typeof CustomerPaymentSuccessRoute
+  '/customer/menu/item/$id': typeof CustomerMenuItemIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
+  '/customer': typeof CustomerRouteWithChildren
   '/forgot-password': typeof ForgotPasswordRoute
   '/login': typeof LoginRoute
   '/onboarding': typeof OnboardingRoute
@@ -159,13 +241,23 @@ export interface FileRoutesById {
   '/app/settings': typeof AppSettingsRoute
   '/app/subscription': typeof AppSubscriptionRoute
   '/app/theme': typeof AppThemeRoute
+  '/customer/cart': typeof CustomerCartRoute
+  '/customer/checkout': typeof CustomerCheckoutRoute
+  '/customer/menu': typeof CustomerMenuRouteWithChildren
+  '/customer/payment': typeof CustomerPaymentRouteWithChildren
   '/app/': typeof AppIndexRoute
+  '/customer/order-confirmation/$id': typeof CustomerOrderConfirmationIdRoute
+  '/customer/order-tracking/$id': typeof CustomerOrderTrackingIdRoute
+  '/customer/payment/failed': typeof CustomerPaymentFailedRoute
+  '/customer/payment/success': typeof CustomerPaymentSuccessRoute
+  '/customer/menu/item/$id': typeof CustomerMenuItemIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/app'
+    | '/customer'
     | '/forgot-password'
     | '/login'
     | '/onboarding'
@@ -179,10 +271,20 @@ export interface FileRouteTypes {
     | '/app/settings'
     | '/app/subscription'
     | '/app/theme'
+    | '/customer/cart'
+    | '/customer/checkout'
+    | '/customer/menu'
+    | '/customer/payment'
     | '/app/'
+    | '/customer/order-confirmation/$id'
+    | '/customer/order-tracking/$id'
+    | '/customer/payment/failed'
+    | '/customer/payment/success'
+    | '/customer/menu/item/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/customer'
     | '/forgot-password'
     | '/login'
     | '/onboarding'
@@ -196,11 +298,21 @@ export interface FileRouteTypes {
     | '/app/settings'
     | '/app/subscription'
     | '/app/theme'
+    | '/customer/cart'
+    | '/customer/checkout'
+    | '/customer/menu'
+    | '/customer/payment'
     | '/app'
+    | '/customer/order-confirmation/$id'
+    | '/customer/order-tracking/$id'
+    | '/customer/payment/failed'
+    | '/customer/payment/success'
+    | '/customer/menu/item/$id'
   id:
     | '__root__'
     | '/'
     | '/app'
+    | '/customer'
     | '/forgot-password'
     | '/login'
     | '/onboarding'
@@ -214,12 +326,22 @@ export interface FileRouteTypes {
     | '/app/settings'
     | '/app/subscription'
     | '/app/theme'
+    | '/customer/cart'
+    | '/customer/checkout'
+    | '/customer/menu'
+    | '/customer/payment'
     | '/app/'
+    | '/customer/order-confirmation/$id'
+    | '/customer/order-tracking/$id'
+    | '/customer/payment/failed'
+    | '/customer/payment/success'
+    | '/customer/menu/item/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AppRoute: typeof AppRouteWithChildren
+  CustomerRoute: typeof CustomerRouteWithChildren
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   LoginRoute: typeof LoginRoute
   OnboardingRoute: typeof OnboardingRoute
@@ -264,6 +386,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/customer': {
+      id: '/customer'
+      path: '/customer'
+      fullPath: '/customer'
+      preLoaderRoute: typeof CustomerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app': {
       id: '/app'
       path: '/app'
@@ -284,6 +413,34 @@ declare module '@tanstack/react-router' {
       fullPath: '/app/'
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
+    }
+    '/customer/payment': {
+      id: '/customer/payment'
+      path: '/payment'
+      fullPath: '/customer/payment'
+      preLoaderRoute: typeof CustomerPaymentRouteImport
+      parentRoute: typeof CustomerRoute
+    }
+    '/customer/menu': {
+      id: '/customer/menu'
+      path: '/menu'
+      fullPath: '/customer/menu'
+      preLoaderRoute: typeof CustomerMenuRouteImport
+      parentRoute: typeof CustomerRoute
+    }
+    '/customer/checkout': {
+      id: '/customer/checkout'
+      path: '/checkout'
+      fullPath: '/customer/checkout'
+      preLoaderRoute: typeof CustomerCheckoutRouteImport
+      parentRoute: typeof CustomerRoute
+    }
+    '/customer/cart': {
+      id: '/customer/cart'
+      path: '/cart'
+      fullPath: '/customer/cart'
+      preLoaderRoute: typeof CustomerCartRouteImport
+      parentRoute: typeof CustomerRoute
     }
     '/app/theme': {
       id: '/app/theme'
@@ -341,6 +498,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAnalyticsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/customer/payment/success': {
+      id: '/customer/payment/success'
+      path: '/success'
+      fullPath: '/customer/payment/success'
+      preLoaderRoute: typeof CustomerPaymentSuccessRouteImport
+      parentRoute: typeof CustomerPaymentRoute
+    }
+    '/customer/payment/failed': {
+      id: '/customer/payment/failed'
+      path: '/failed'
+      fullPath: '/customer/payment/failed'
+      preLoaderRoute: typeof CustomerPaymentFailedRouteImport
+      parentRoute: typeof CustomerPaymentRoute
+    }
+    '/customer/order-tracking/$id': {
+      id: '/customer/order-tracking/$id'
+      path: '/order-tracking/$id'
+      fullPath: '/customer/order-tracking/$id'
+      preLoaderRoute: typeof CustomerOrderTrackingIdRouteImport
+      parentRoute: typeof CustomerRoute
+    }
+    '/customer/order-confirmation/$id': {
+      id: '/customer/order-confirmation/$id'
+      path: '/order-confirmation/$id'
+      fullPath: '/customer/order-confirmation/$id'
+      preLoaderRoute: typeof CustomerOrderConfirmationIdRouteImport
+      parentRoute: typeof CustomerRoute
+    }
+    '/customer/menu/item/$id': {
+      id: '/customer/menu/item/$id'
+      path: '/item/$id'
+      fullPath: '/customer/menu/item/$id'
+      preLoaderRoute: typeof CustomerMenuItemIdRouteImport
+      parentRoute: typeof CustomerMenuRoute
+    }
   }
 }
 
@@ -370,9 +562,58 @@ const AppRouteChildren: AppRouteChildren = {
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
+interface CustomerMenuRouteChildren {
+  CustomerMenuItemIdRoute: typeof CustomerMenuItemIdRoute
+}
+
+const CustomerMenuRouteChildren: CustomerMenuRouteChildren = {
+  CustomerMenuItemIdRoute: CustomerMenuItemIdRoute,
+}
+
+const CustomerMenuRouteWithChildren = CustomerMenuRoute._addFileChildren(
+  CustomerMenuRouteChildren,
+)
+
+interface CustomerPaymentRouteChildren {
+  CustomerPaymentFailedRoute: typeof CustomerPaymentFailedRoute
+  CustomerPaymentSuccessRoute: typeof CustomerPaymentSuccessRoute
+}
+
+const CustomerPaymentRouteChildren: CustomerPaymentRouteChildren = {
+  CustomerPaymentFailedRoute: CustomerPaymentFailedRoute,
+  CustomerPaymentSuccessRoute: CustomerPaymentSuccessRoute,
+}
+
+const CustomerPaymentRouteWithChildren = CustomerPaymentRoute._addFileChildren(
+  CustomerPaymentRouteChildren,
+)
+
+interface CustomerRouteChildren {
+  CustomerCartRoute: typeof CustomerCartRoute
+  CustomerCheckoutRoute: typeof CustomerCheckoutRoute
+  CustomerMenuRoute: typeof CustomerMenuRouteWithChildren
+  CustomerPaymentRoute: typeof CustomerPaymentRouteWithChildren
+  CustomerOrderConfirmationIdRoute: typeof CustomerOrderConfirmationIdRoute
+  CustomerOrderTrackingIdRoute: typeof CustomerOrderTrackingIdRoute
+}
+
+const CustomerRouteChildren: CustomerRouteChildren = {
+  CustomerCartRoute: CustomerCartRoute,
+  CustomerCheckoutRoute: CustomerCheckoutRoute,
+  CustomerMenuRoute: CustomerMenuRouteWithChildren,
+  CustomerPaymentRoute: CustomerPaymentRouteWithChildren,
+  CustomerOrderConfirmationIdRoute: CustomerOrderConfirmationIdRoute,
+  CustomerOrderTrackingIdRoute: CustomerOrderTrackingIdRoute,
+}
+
+const CustomerRouteWithChildren = CustomerRoute._addFileChildren(
+  CustomerRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AppRoute: AppRouteWithChildren,
+  CustomerRoute: CustomerRouteWithChildren,
   ForgotPasswordRoute: ForgotPasswordRoute,
   LoginRoute: LoginRoute,
   OnboardingRoute: OnboardingRoute,

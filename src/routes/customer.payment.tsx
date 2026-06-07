@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CustomerLayout } from "@/components/customer/CustomerLayout";
 import { useCart } from "@/lib/cart";
 import { Button } from "@/components/ui/button";
